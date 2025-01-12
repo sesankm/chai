@@ -2,10 +2,17 @@
 #include <stdio.h>
 #include <math.h>
 #include "perceptron.h"
+#include "neuralnetwork.h"
 
 int parseArgs(int, char**, char**, int*, int*, float*, int*);
 
+int trainPerceptron(int, char**);
+
 int main(int argc, char** argv){
+	return trainPerceptron(argc, argv);
+}
+
+int trainPerceptron(int argc, char** argv) {
 	char* fileName = malloc(sizeof(char) * 250);
 	int dimSize = 0;
 	int trainDataSize = 0;
@@ -23,7 +30,6 @@ int main(int argc, char** argv){
 	for(int i = 0; i < numEpochs; i++) {
 		epoch(&p);
 	}
-
 	predict(p);
 	return 0;
 }

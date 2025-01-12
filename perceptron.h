@@ -41,14 +41,19 @@ Perceptron createPerceptron(int dimensionSize, int inputSize, float learningRate
 	return perceptron;
 }
 
+Perceptron createNeuron(int dimensionSize){
+	Perceptron perceptron;
+	perceptron.dimensionSize = dimensionSize;
+	initializeWeights(&perceptron);
+	return perceptron;
+}
+
 void readInputData(char* fileName, Perceptron* p){
 	FILE *fptr;
 	char line[256];
 	int lineCount = 0;
 	fptr = fopen(fileName, "r");
-
 	p->trainDataOutput = malloc(p->inputSize * sizeof(int));
-
 	while(fgets(line, sizeof(line), fptr)) {
 		char* strValue = strtok(line, ",");
 		int dimCount = 0;
